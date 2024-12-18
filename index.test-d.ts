@@ -1,7 +1,7 @@
-import {expectType, expectError} from 'tsd';
-import {ReadonlyDeep} from 'type-fest';
-import globals = require('.');
+import {expectType, expectError, expectAssignable} from 'tsd';
+import {type ReadonlyDeep} from 'type-fest';
+import globals from './index.js';
 
-expectType<ReadonlyDeep<Record<string, Record<string, boolean>>>>(globals);
-expectType<boolean>(globals.builtin.Array);
+expectAssignable<ReadonlyDeep<Record<string, Record<string, boolean>>>>(globals);
+expectType<false>(globals.builtin.Array);
 expectError((globals.builtin.Array = true));
